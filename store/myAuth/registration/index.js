@@ -1,5 +1,8 @@
 export const state = () => ({
-  ruleForm: {}
+  ruleForm: {},
+  alertDanger: {},
+  placeholder: {}
+
 });
 
 export const actions = {
@@ -10,8 +13,7 @@ export const actions = {
       email: state.ruleForm.email,
       password: state.ruleForm.password
     };
-    console.log(e.target.value);
-
+    // console.log(e.target.value);
     commit('RULE_FORM', ruleForm)
   },
   updateRuleForm_email ({commit, state}, e) {
