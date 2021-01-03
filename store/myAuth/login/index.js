@@ -1,6 +1,8 @@
 
 export const state = () => ({
-  ruleForm: []
+  ruleForm: [],
+  alertDanger: false,
+  placeholder: ''
 });
 
 export const actions = {
@@ -24,13 +26,13 @@ export const actions = {
     commit('RULE_FORM', ruleForm)
   },
 
-  async submitForm ({state}) {
+  async submitForm({commit, state}) {
     if (!state.ruleForm.email || !state.ruleForm.password) {
-      console.log('Поля не заполнены!!!!')
-      // Message.error({
-      //   message: 'Пустое поле',
-      //   center: true
-      // });
+      console.log('Поля не заполнены!!!!');
+      const alertDanger = true;
+      const placeholder = 'Пустое поле';
+      commit('ALERT_DANGER', alertDanger)
+      commit('PLACEHOLDER', placeholder)
     } else {
       await this.$auth.login({
         data: {
@@ -43,14 +45,16 @@ export const actions = {
       )
     }
   },
-
-
 };
 
 export const mutations = {
-  RULE_FORM: (state, ruleForm) => state.ruleForm = ruleForm
+  RULE_FORM: (state, ruleForm) => state.ruleForm = ruleForm,
+  ALERT_DANGER: (state, alertDanger) => state.alertDanger = alertDanger,
+  PLACEHOLDER: (state, placeholder) => state.placeholder = placeholder
 };
 
 export const getters = {
-  ruleForm: state => state.ruleForm
+  ruleForm: state => state.ruleForm,
+  alertDanger: state => state.alertDanger,
+  placeholder: state => state.placeholder
 };

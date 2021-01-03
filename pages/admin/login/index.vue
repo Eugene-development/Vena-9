@@ -19,14 +19,15 @@
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-        <form :model="ruleFormValidate" :rules="rules" ref="ruleForm"  @submit.prevent="submitForm">
+        <form ref="ruleForm"  @submit.prevent="submitForm">
           <div>
             <label for="email" class="block text-sm font-medium leading-5 text-gray-700">
               Ваша почта
             </label>
             <div class="mt-1 rounded-md shadow-sm">
               <input
-                v-model="ruleFormValidate.email"
+                :class="{'bg-red-50': alertDanger}"
+                :placeholder="[placeholder]"
                 @input="updateRuleForm_email"
                 id="email"
                 type="email"
@@ -41,7 +42,6 @@
             </label>
             <div class="mt-1 rounded-md shadow-sm">
               <input
-                v-model="ruleFormValidate.password"
                 @input="updateRuleForm_password"
                 id="password"
                 type="password"
@@ -99,7 +99,9 @@
           </div>
         </div>
       </div>
-    </div>
+
+
+  </div>
 
 </template>
 
@@ -109,22 +111,22 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   layout: 'empty',
 
-  data() {
-    return {
-      ruleFormValidate: {
-        email: '',
-        password: '',
-      },
-      rules: {
-        email: [
-          { required: true, message: 'Заполните поле', trigger: 'blur' },
-        ],
-        password: [
-          { required: true, message: 'Заполните поле', trigger: 'blur' },
-        ],
-      }
-    };
-  },
+  // data() {
+  //   return {
+  //     ruleFormValidate: {
+  //       email: '',
+  //       password: '',
+  //     },
+  //     rules: {
+  //       email: [
+  //         { required: true, message: 'Заполните поле', trigger: 'blur' },
+  //       ],
+  //       password: [
+  //         { required: true, message: 'Заполните поле', trigger: 'blur' },
+  //       ],
+  //     }
+  //   };
+  // },
 
   methods : {
     ...mapActions({
@@ -137,6 +139,8 @@ export default {
   computed: {
     ...mapGetters({
       ruleForm: 'myAuth/login/ruleForm',
+      alertDanger: 'myAuth/login/alertDanger',
+      placeholder: 'myAuth/login/placeholder',
     }),
   },
 
