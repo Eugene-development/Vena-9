@@ -21,22 +21,20 @@ export const actions = {
       email: state.ruleForm.email,
       password: e.target.value
     };
-
     console.log(e.target.value);
     commit('RULE_FORM', ruleForm)
   },
 
   async submitForm({commit, state}) {
     if (!state.ruleForm.email || !state.ruleForm.password) {
-      console.log('Поля не заполнены!!!!');
       const alertDanger = true;
-      // const alertDanger = true;
       const placeholder = {
-        email: 'Поле пустое'
+        email: 'Введите логин',
+        password: 'Введите пароль'
       };
       commit('ALERT_DANGER', alertDanger)
       commit('PLACEHOLDER', placeholder)
-    } else {
+    } else if (state.ruleForm.email && state.ruleForm.password) {
       await this.$auth.login({
         data: {
           email: state.ruleForm.email,

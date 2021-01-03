@@ -22,7 +22,7 @@
         <form ref="ruleForm"  @submit.prevent="submitForm">
           <div>
             <label for="email" class="block text-sm font-medium leading-5 text-gray-700">
-              Ваша почта
+              Ваш логин
             </label>
             <div class="mt-1 rounded-md shadow-sm">
               <input
@@ -42,6 +42,8 @@
             </label>
             <div class="mt-1 rounded-md shadow-sm">
               <input
+                :class="{'bg-red-50': alertDanger}"
+                :placeholder="[placeholder.password]"
                 @input="updateRuleForm_password"
                 id="password"
                 type="password"
