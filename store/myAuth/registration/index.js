@@ -1,6 +1,6 @@
 
 export const state = () => ({
-  ruleForm: []
+  ruleForm: {}
 });
 
 export const actions = {

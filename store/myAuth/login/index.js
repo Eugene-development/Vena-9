@@ -1,8 +1,8 @@
 
 export const state = () => ({
-  ruleForm: [],
+  ruleForm: {},
   alertDanger: false,
-  placeholder: ''
+  placeholder: {}
 });
 
 export const actions = {
@@ -30,7 +30,10 @@ export const actions = {
     if (!state.ruleForm.email || !state.ruleForm.password) {
       console.log('Поля не заполнены!!!!');
       const alertDanger = true;
-      const placeholder = 'Пустое поле';
+      // const alertDanger = true;
+      const placeholder = {
+        email: 'Поле пустое'
+      };
       commit('ALERT_DANGER', alertDanger)
       commit('PLACEHOLDER', placeholder)
     } else {

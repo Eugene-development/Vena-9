@@ -27,7 +27,7 @@
             <div class="mt-1 rounded-md shadow-sm">
               <input
                 :class="{'bg-red-50': alertDanger}"
-                :placeholder="[placeholder]"
+                :placeholder="[placeholder.email]"
                 @input="updateRuleForm_email"
                 id="email"
                 type="email"
