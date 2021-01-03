@@ -70,13 +70,13 @@ export default {
       local: {
         endpoints: {
           login: {
-            url: 'http://23.111.204.148:8888/api/login', method: 'post', propertyName: 'meta.token'
+            url: 'http://localhost:8888/api/login', method: 'post', propertyName: 'meta.token'
           },
           user: {
-            url: 'http://23.111.204.148:8888/api/me', method: 'get', propertyName: 'data'
+            url: 'http://localhost:8888/api/me', method: 'get', propertyName: 'data'
           },
           logout: {
-            url: 'http://23.111.204.148:8888/api/logout', method: 'post'
+            url: 'http://localhost:8888/api/logout', method: 'post'
           }
         }
       }
@@ -94,6 +94,35 @@ export default {
     //   //   home: '/'
     //   // }
   },
+  // auth: {
+  //   strategies: {
+  //     local: {
+  //       endpoints: {
+  //         login: {
+  //           url: 'http://23.111.204.148:8888/api/login', method: 'post', propertyName: 'meta.token'
+  //         },
+  //         user: {
+  //           url: 'http://23.111.204.148:8888/api/me', method: 'get', propertyName: 'data'
+  //         },
+  //         logout: {
+  //           url: 'http://23.111.204.148:8888/api/logout', method: 'post'
+  //         }
+  //       }
+  //     }
+  //   },
+  //   //
+  //   //
+  //   //
+  //   //
+  //   //
+  //   //
+  //   //
+  //   //
+  //   //   // redirect: {
+  //   //   //   login: '/auth/signin',
+  //   //   //   home: '/'
+  //   //   // }
+  // },
 
 
 

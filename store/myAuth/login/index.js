@@ -26,27 +26,28 @@ export const actions = {
   },
 
   async submitForm({commit, state}) {
-    if (!state.ruleForm.email || !state.ruleForm.password) {
 
       if (!state.ruleForm.email) {
         const alertDanger = {
           email: true,
+          password: state.alertDanger.password
         };
         commit('ALERT_DANGER', alertDanger)
       }
       if (!state.ruleForm.password) {
         const alertDanger = {
+          email: state.alertDanger.email,
           password: true,
         };
         commit('ALERT_DANGER', alertDanger)
       }
-      if (!state.ruleForm.email && !state.ruleForm.password) {
-        const alertDanger = {
-          email: true,
-          password: true,
-        };
-        commit('ALERT_DANGER', alertDanger)
-      }
+      // if (!state.ruleForm.email && !state.ruleForm.password) {
+      //   const alertDanger = {
+      //     email: true,
+      //     password: true,
+      //   };
+      //   commit('ALERT_DANGER', alertDanger)
+      // }
 
       const placeholder = {
         email: 'Введите логин',
@@ -54,7 +55,9 @@ export const actions = {
       };
       commit('PLACEHOLDER', placeholder)
 
-    }
+
+
+
     if (state.ruleForm.email && state.ruleForm.password) {
       await this.$auth.login({
         data: {
