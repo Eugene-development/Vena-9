@@ -113,23 +113,6 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   layout: 'empty',
 
-  // data() {
-  //   return {
-  //     ruleFormValidate: {
-  //       email: '',
-  //       password: '',
-  //     },
-  //     rules: {
-  //       email: [
-  //         { required: true, message: 'Заполните поле', trigger: 'blur' },
-  //       ],
-  //       password: [
-  //         { required: true, message: 'Заполните поле', trigger: 'blur' },
-  //       ],
-  //     }
-  //   };
-  // },
-
   methods : {
     ...mapActions({
       'updateRuleForm_email': 'myAuth/login/updateRuleForm_email',
