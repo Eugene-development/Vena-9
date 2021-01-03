@@ -1,7 +1,7 @@
 
 export const state = () => ({
   ruleForm: {},
-  alertDanger: false,
+  alertDanger: {},
   placeholder: {}
 });
 
@@ -21,20 +21,41 @@ export const actions = {
       email: state.ruleForm.email,
       password: e.target.value
     };
-    console.log(e.target.value);
+    // console.log(e.target.value);
     commit('RULE_FORM', ruleForm)
   },
 
   async submitForm({commit, state}) {
     if (!state.ruleForm.email || !state.ruleForm.password) {
-      const alertDanger = true;
+
+      if (!state.ruleForm.email) {
+        const alertDanger = {
+          email: true,
+        };
+        commit('ALERT_DANGER', alertDanger)
+      }
+      if (!state.ruleForm.password) {
+        const alertDanger = {
+          password: true,
+        };
+        commit('ALERT_DANGER', alertDanger)
+      }
+      if (!state.ruleForm.email && !state.ruleForm.password) {
+        const alertDanger = {
+          email: true,
+          password: true,
+        };
+        commit('ALERT_DANGER', alertDanger)
+      }
+
       const placeholder = {
         email: 'Введите логин',
         password: 'Введите пароль'
       };
-      commit('ALERT_DANGER', alertDanger)
       commit('PLACEHOLDER', placeholder)
-    } else if (state.ruleForm.email && state.ruleForm.password) {
+
+    }
+    if (state.ruleForm.email && state.ruleForm.password) {
       await this.$auth.login({
         data: {
           email: state.ruleForm.email,

@@ -26,7 +26,7 @@
             </label>
             <div class="mt-1 rounded-md shadow-sm">
               <input
-                :class="{'bg-red-50': alertDanger}"
+                :class="{'bg-red-50': alertDanger.email}"
                 :placeholder="[placeholder.email]"
                 @input="updateRuleForm_email"
                 id="email"
@@ -42,7 +42,7 @@
             </label>
             <div class="mt-1 rounded-md shadow-sm">
               <input
-                :class="{'bg-red-50': alertDanger}"
+                :class="{'bg-red-50': alertDanger.password}"
                 :placeholder="[placeholder.password]"
                 @input="updateRuleForm_password"
                 id="password"
