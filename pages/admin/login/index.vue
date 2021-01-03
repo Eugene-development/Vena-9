@@ -19,14 +19,14 @@
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-        <form ref="ruleForm"  @submit.prevent="submitForm">
+        <form ref="ruleForm" @submit.prevent="submitForm">
           <div>
             <label for="email" class="block text-sm font-medium leading-5 text-gray-700">
               Ваш логин
             </label>
             <div class="mt-1 rounded-md shadow-sm">
               <input
-                :class="{'bg-red-50': alertDanger.email}"
+                :class="{'bg-red-100': alertDanger.email}"
                 :placeholder="[placeholder.email]"
                 @input="updateRuleForm_email"
                 id="email"
@@ -42,7 +42,7 @@
             </label>
             <div class="mt-1 rounded-md shadow-sm">
               <input
-                :class="{'bg-red-50': alertDanger.password}"
+                :class="{'bg-red-100': alertDanger.password}"
                 :placeholder="[placeholder.password]"
                 @input="updateRuleForm_password"
                 id="password"
@@ -145,32 +145,6 @@ export default {
       placeholder: 'myAuth/login/placeholder',
     }),
   },
-
-
-
-  // methods: {
-  //   async submitForm ({redirect}) {
-  //     await this.$auth.login({
-  //       data: this.ruleForm
-  //     });
-  //     // await this.$router.push({
-  //     //   path: this.$route.query.redirect || '/dashboard'
-  //     // });
-  //     // Переход на внешний ресурс
-  //     // window.location.href = 'https://www.google.com';
-  //     if (!this.$auth.loggedIn) {
-  //       console.log('Нет доступа!');
-  //       console.log(this.$auth.loggedIn)
-  //       return redirect('/admin/login')
-  //     }
-  //     await this.$router.push(
-  //       '/'
-  //     )
-  //   },
-  //   resetForm(formName) {
-  //     this.$refs[formName].resetFields();
-  //   }
-  // }
 }
 </script>
 

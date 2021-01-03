@@ -34,13 +34,43 @@ export const actions = {
   },
 
 
-  async submitForm ({state}) {
-    if (!state.ruleForm.name || !state.ruleForm.email || !state.ruleForm.password) {
-      // Message.error({
-      //   message: 'Пустое поле',
-      //   center: true
-      // });
-    } else {
+  async submitForm ({commit, state}) {
+
+    if (!state.ruleForm.name) {
+      const alertDanger = {
+        name: true,
+        email: state.alertDanger.email,
+        password: state.alertDanger.password,
+      };
+      commit('ALERT_DANGER', alertDanger)
+    }
+    if (!state.ruleForm.email) {
+      const alertDanger = {
+        name: state.alertDanger.name,
+        email: true,
+        password: state.alertDanger.password
+      };
+      commit('ALERT_DANGER', alertDanger)
+    }
+    if (!state.ruleForm.password) {
+      const alertDanger = {
+        name: state.alertDanger.name,
+        email: state.alertDanger.email,
+        password: true,
+      };
+      commit('ALERT_DANGER', alertDanger)
+    }
+
+    const placeholder = {
+      name: 'Введите имя',
+      email: 'Введите логин',
+      password: 'Введите пароль'
+    };
+    commit('PLACEHOLDER', placeholder)
+
+
+
+    if (state.ruleForm.name && state.ruleForm.email && state.ruleForm.password){
 
       await this.$axios.post('http://localhost:8888/api/register', state.ruleForm);
       // await this.$axios.post('http://23.111.204.148:8888/api/register', state.ruleForm);
@@ -64,8 +94,12 @@ export const actions = {
 
 export const mutations = {
   RULE_FORM: (state, ruleForm) => state.ruleForm = ruleForm,
+  ALERT_DANGER: (state, alertDanger) => state.alertDanger = alertDanger,
+  PLACEHOLDER: (state, placeholder) => state.placeholder = placeholder
 };
 
 export const getters = {
   ruleForm: state => state.ruleForm,
+  alertDanger: state => state.alertDanger,
+  placeholder: state => state.placeholder
 };

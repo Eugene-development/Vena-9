@@ -19,14 +19,15 @@
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-        <form :model="ruleFormValidate" :rules="rules" ref="ruleForm" @submit.prevent="submitForm">
+        <form ref="ruleForm" @submit.prevent="submitForm">
           <div>
             <label for="name" class="block text-sm font-medium leading-5 text-gray-700">
               Ваше имя
             </label>
             <div class="mt-1 rounded-md shadow-sm">
               <input
-                v-model="ruleFormValidate.name"
+                :class="{'bg-red-100': alertDanger.name}"
+                :placeholder="[placeholder.name]"
                 @input="updateRuleForm_name"
                 id="name"
                 required
@@ -40,7 +41,8 @@
             </label>
             <div class="mt-1 rounded-md shadow-sm">
               <input
-                v-model="ruleFormValidate.email"
+                :class="{'bg-red-100': alertDanger.email}"
+                :placeholder="[placeholder.email]"
                 @input="updateRuleForm_email"
                 id="email"
                 type="email"
@@ -55,7 +57,8 @@
             </label>
             <div class="mt-1 rounded-md shadow-sm">
               <input
-                v-model="ruleFormValidate.password"
+                :class="{'bg-red-100': alertDanger.password}"
+                :placeholder="[placeholder.password]"
                 @input="updateRuleForm_password"
                 id="password"
                 type="password"
@@ -70,7 +73,6 @@
             </label>
             <div class="mt-1 rounded-md shadow-sm">
               <input
-                v-model="ruleFormValidate.checkPassword"
                 id="confirm_password"
                 type="password"
                 required
@@ -101,8 +103,6 @@
               class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-gray-50 bg-teal-700 hover:bg-teal-600 focus:outline-none focus:border-teal-700 focus:shadow-outline-teal transition duration-150 ease-in-out">
               Зарегистрировать
             </button>
-
-
 <!--                        <button @click="resetForm('ruleForm')">Очистить</button>-->
 
           </span>
@@ -140,39 +140,6 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   layout: 'empty',
-  data() {
-    let validatePass2 = (rule, value, callback) => {
-      if (value !== this.ruleForm.password) {
-        callback(new Error('Пароли не совпадают'));
-      } else {
-        callback();
-      }
-    };
-    return {
-      ruleFormValidate: {
-        name: '',
-        email: '',
-        password: '',
-      },
-      rules: {
-        name: [
-          {required: true, message: 'Заполните поле', trigger: 'blur'},
-        ],
-        email: [
-          { required: true, message: 'Заполните поле', trigger: 'blur' },
-          { type: 'email',  message: 'Неверный формат почты', trigger: 'blur' },
-        ],
-        password: [
-          { required: true, message: 'Заполните поле', trigger: 'blur' },
-        ],
-        checkPassword: [
-          { required: true, message: 'Заполните поле', trigger: 'blur' },
-          { validator: validatePass2, trigger: 'blur' }
-        ],
-      },
-    };
-  },
-
 
   methods: {
     ...mapActions({
@@ -183,40 +150,15 @@ export default {
     }),
 
 
-    // submitForm(formName) {
-    //   this.$refs[formName].validate((valid) => {
-    //     if (valid) {
-    //       debugger
-    //     } else {
-    //       console.log('error submit!!');
-    //       return false;
-    //     }
-    //   });
-    // },
-    // async submitForm () {
-    //   await this.$axios.post('http://127.0.0.1:8000/api/register', this.ruleForm);
-    //
-    //   await this.$auth.login({
-    //     data: {
-    //       name: this.ruleForm.name,
-    //       email: this.ruleForm.email,
-    //       password: this.ruleForm.password
-    //     }
-    //   });
-    //
-    //   await this.$router.push({
-    //     path: this.$route.query.redirect || '/admin/office'
-    //   })
-    // },
-
-
-    resetForm(formName) {
-      this.$refs[formName].resetFields();
-    }
+    // resetForm(formName) {
+    //   this.$refs[formName].resetFields();
+    // }
   },
   computed: {
     ...mapGetters({
       ruleForm: 'myAuth/registration/ruleForm',
+      alertDanger: 'myAuth/registration/alertDanger',
+      placeholder: 'myAuth/registration/placeholder',
     }),
   },
 

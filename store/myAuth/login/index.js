@@ -28,6 +28,7 @@ export const actions = {
   async submitForm({commit, state}) {
 
       if (!state.ruleForm.email) {
+
         const alertDanger = {
           email: true,
           password: state.alertDanger.password
