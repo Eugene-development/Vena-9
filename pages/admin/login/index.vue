@@ -19,14 +19,15 @@
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-        <form :model="ruleForm" :rules="rules" ref="ruleForm"  @submit.prevent="submitForm">
+        <form :model="ruleFormValidate" :rules="rules" ref="ruleForm"  @submit.prevent="submitForm">
           <div>
             <label for="email" class="block text-sm font-medium leading-5 text-gray-700">
               Ваша почта
             </label>
             <div class="mt-1 rounded-md shadow-sm">
               <input
-                v-model="ruleForm.email"
+                v-model="ruleFormValidate.email"
+                @input="updateRuleForm_email"
                 id="email"
                 type="email"
                 required
@@ -40,7 +41,8 @@
             </label>
             <div class="mt-1 rounded-md shadow-sm">
               <input
-                v-model="ruleForm.password"
+                v-model="ruleFormValidate.password"
+                @input="updateRuleForm_password"
                 id="password"
                 type="password"
                 required
@@ -102,12 +104,14 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   layout: 'empty',
 
   data() {
     return {
-      ruleForm: {
+      ruleFormValidate: {
         email: '',
         password: '',
       },
@@ -121,30 +125,46 @@ export default {
       }
     };
   },
-  methods: {
-    async submitForm ({redirect}) {
-      await this.$auth.login({
-        data: this.ruleForm
-      });
-      // await this.$router.push({
-      //   path: this.$route.query.redirect || '/dashboard'
-      // });
-      // Переход на внешний ресурс
-      // window.location.href = 'https://www.google.com';
-      if (!this.$auth.loggedIn) {
-        console.log('Нет доступа!');
-        console.log(this.$auth.loggedIn)
-        return redirect('/admin/login')
-      }
-      await this.$router.push(
-        '/'
-      )
 
-    },
-    resetForm(formName) {
-      this.$refs[formName].resetFields();
-    }
-  }
+  methods : {
+    ...mapActions({
+      'updateRuleForm_email': 'myAuth/login/updateRuleForm_email',
+      'updateRuleForm_password': 'myAuth/login/updateRuleForm_password',
+      'submitForm': 'myAuth/login/submitForm',
+    })
+  },
+
+  computed: {
+    ...mapGetters({
+      ruleForm: 'myAuth/login/ruleForm',
+    }),
+  },
+
+
+
+  // methods: {
+  //   async submitForm ({redirect}) {
+  //     await this.$auth.login({
+  //       data: this.ruleForm
+  //     });
+  //     // await this.$router.push({
+  //     //   path: this.$route.query.redirect || '/dashboard'
+  //     // });
+  //     // Переход на внешний ресурс
+  //     // window.location.href = 'https://www.google.com';
+  //     if (!this.$auth.loggedIn) {
+  //       console.log('Нет доступа!');
+  //       console.log(this.$auth.loggedIn)
+  //       return redirect('/admin/login')
+  //     }
+  //     await this.$router.push(
+  //       '/'
+  //     )
+  //   },
+  //   resetForm(formName) {
+  //     this.$refs[formName].resetFields();
+  //   }
+  // }
 }
 </script>
 

@@ -172,8 +172,9 @@ export default {
       },
     };
   },
-  methods: {
 
+
+  methods: {
     ...mapActions({
       'updateRuleForm_name': 'myAuth/registration/updateRuleForm_name',
       'updateRuleForm_email': 'myAuth/registration/updateRuleForm_email',

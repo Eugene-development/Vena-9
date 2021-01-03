@@ -19,11 +19,14 @@ export const actions = {
       email: state.ruleForm.email,
       password: e.target.value
     };
+
+    console.log(e.target.value);
     commit('RULE_FORM', ruleForm)
   },
 
   async submitForm ({state}) {
     if (!state.ruleForm.email || !state.ruleForm.password) {
+      console.log('Поля не заполнены!!!!')
       // Message.error({
       //   message: 'Пустое поле',
       //   center: true
@@ -35,9 +38,8 @@ export const actions = {
           password: state.ruleForm.password
         }
       });
-
       await this.$router.push(
-        'https://yandex.ru/'
+        '/'
       )
     }
   },
@@ -46,7 +48,9 @@ export const actions = {
 };
 
 export const mutations = {
+  RULE_FORM: (state, ruleForm) => state.ruleForm = ruleForm
 };
 
 export const getters = {
+  ruleForm: state => state.ruleForm
 };
