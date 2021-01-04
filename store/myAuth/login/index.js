@@ -1,4 +1,3 @@
-
 export const state = () => ({
   ruleForm: {},
   alertDanger: {},
@@ -7,6 +6,7 @@ export const state = () => ({
 
 export const actions = {
 
+  // Заполнение полей формы при строгом режиме
   updateRuleForm_email ({commit, state}, e) {
     const ruleForm = {
       name: state.ruleForm.name,
@@ -25,10 +25,11 @@ export const actions = {
     commit('RULE_FORM', ruleForm)
   },
 
+  //Отправка формы на сервер
   async submitForm({commit, state}) {
 
+      //Валидация полей формы. bg-red
       if (!state.ruleForm.email) {
-
         const alertDanger = {
           email: true,
           password: state.alertDanger.password
@@ -42,23 +43,14 @@ export const actions = {
         };
         commit('ALERT_DANGER', alertDanger)
       }
-      // if (!state.ruleForm.email && !state.ruleForm.password) {
-      //   const alertDanger = {
-      //     email: true,
-      //     password: true,
-      //   };
-      //   commit('ALERT_DANGER', alertDanger)
-      // }
-
+      //Валидация полей формы placeholder
       const placeholder = {
         email: 'Введите логин',
         password: 'Введите пароль'
       };
       commit('PLACEHOLDER', placeholder)
 
-
-
-
+    //Выполнение метода при успешной валидации
     if (state.ruleForm.email && state.ruleForm.password) {
       await this.$auth.login({
         data: {
