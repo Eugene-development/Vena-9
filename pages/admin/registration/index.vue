@@ -68,11 +68,17 @@
           </div>
 
           <div class="mt-6">
-            <label for="confirm_password" class="block text-sm font-medium leading-5 text-gray-700">
+            <label v-if="!alertDanger.confirm_password" for="confirm_password" class="block text-sm font-medium leading-5 text-gray-700">
               Повторите пароль
+            </label>
+            <label v-if="alertDanger.confirm_password" for="confirm_password" class="block text-sm font-medium leading-5 text-gray-700">
+              Пароли не совпадают
             </label>
             <div class="mt-1 rounded-md shadow-sm">
               <input
+                :class="{'bg-red-100': alertDanger.confirm_password}"
+                :placeholder="[placeholder.confirm_password]"
+                @input="updateRuleForm_confirm_password"
                 id="confirm_password"
                 type="password"
                 required
@@ -136,7 +142,7 @@
 
 <script>
 
-import { mapGetters, mapActions } from 'vuex';
+import {  mapActions, mapGetters } from 'vuex';
 
 export default {
   layout: 'empty',
@@ -146,12 +152,13 @@ export default {
       'updateRuleForm_name': 'myAuth/registration/updateRuleForm_name',
       'updateRuleForm_email': 'myAuth/registration/updateRuleForm_email',
       'updateRuleForm_password': 'myAuth/registration/updateRuleForm_password',
+      'updateRuleForm_confirm_password': 'myAuth/registration/updateRuleForm_confirm_password',
       'submitForm': 'myAuth/registration/submitForm',
     }),
 
 
     // resetForm(formName) {
-    //   this.$refs[formName].resetFields();
+    //   this.$refs[formName].innerHTML = 'fhjgoifgjidfojndiofjoktg';
     // }
   },
   computed: {

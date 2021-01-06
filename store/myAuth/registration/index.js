@@ -11,7 +11,8 @@ export const actions = {
     const ruleForm = {
       name: e.target.value,
       email: state.ruleForm.email,
-      password: state.ruleForm.password
+      password: state.ruleForm.password,
+      confirm_password: state.ruleForm.confirm_password
     };
     // console.log(e.target.value);
     commit('RULE_FORM', ruleForm)
@@ -20,27 +21,39 @@ export const actions = {
     const ruleForm = {
       name: state.ruleForm.name,
       email: e.target.value,
-      password: state.ruleForm.password
+      password: state.ruleForm.password,
+      confirm_password: state.ruleForm.confirm_password
     };
     commit('RULE_FORM', ruleForm)
   },
-  updateRuleForm_password ({commit, state}, e) {
+  updateRuleForm_password({commit, state}, e) {
     const ruleForm = {
       name: state.ruleForm.name,
       email: state.ruleForm.email,
-      password: e.target.value
+      password: e.target.value,
+      confirm_password: state.ruleForm.confirm_password
+    };
+    commit('RULE_FORM', ruleForm)
+  },
+  updateRuleForm_confirm_password({commit, state}, e) {
+    const ruleForm = {
+      name: state.ruleForm.name,
+      email: state.ruleForm.email,
+      password: state.ruleForm.password,
+      confirm_password: e.target.value
     };
     commit('RULE_FORM', ruleForm)
   },
 
 
-  async submitForm ({commit, state}) {
+  async submitForm({commit, state}) {
 
     if (!state.ruleForm.name) {
       const alertDanger = {
         name: true,
         email: state.alertDanger.email,
         password: state.alertDanger.password,
+        confirm_password: state.ruleForm.confirm_password
       };
       commit('ALERT_DANGER', alertDanger)
     }
@@ -48,7 +61,8 @@ export const actions = {
       const alertDanger = {
         name: state.alertDanger.name,
         email: true,
-        password: state.alertDanger.password
+        password: state.alertDanger.password,
+        confirm_password: state.ruleForm.confirm_password
       };
       commit('ALERT_DANGER', alertDanger)
     }
@@ -57,20 +71,41 @@ export const actions = {
         name: state.alertDanger.name,
         email: state.alertDanger.email,
         password: true,
+        confirm_password: state.ruleForm.confirm_password
       };
+      commit('ALERT_DANGER', alertDanger)
+    }
+    if (!state.ruleForm.confirm_password) {
+      const alertDanger = {
+        name: state.alertDanger.name,
+        email: state.alertDanger.email,
+        password: state.alertDanger.password,
+        confirm_password: true
+      };
+      commit('ALERT_DANGER', alertDanger)
+    }
+
+    if (state.ruleForm.password !== state.ruleForm.confirm_password) {
+      const alertDanger = {
+        name: state.alertDanger.name,
+        email: state.alertDanger.email,
+        password: true,
+        confirm_password: true
+      };
+      commit('PLACEHOLDER', placeholder)
       commit('ALERT_DANGER', alertDanger)
     }
 
     const placeholder = {
       name: 'Введите имя',
       email: 'Введите логин',
-      password: 'Введите пароль'
+      password: 'Введите пароль',
+      confirm_password: 'Повторите пароль'
     };
     commit('PLACEHOLDER', placeholder)
 
 
-
-    if (state.ruleForm.name && state.ruleForm.email && state.ruleForm.password){
+    if (state.ruleForm.name && state.ruleForm.email && state.ruleForm.password && state.ruleForm.password === state.ruleForm.confirm_password) {
 
       await this.$axios.post('http://localhost:8888/api/register', state.ruleForm);
       // await this.$axios.post('http://23.111.204.148:8888/api/register', state.ruleForm);

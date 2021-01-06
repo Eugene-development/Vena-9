@@ -32,7 +32,7 @@
           <!--Секция сайдбара "Главная"-->
           <div>
             <NuxtLink
-              class="group flex items-center px-2 py-4 my-3 text-lg leading-6 text-white font-medium rounded-md c bg-gray-700 bg-opacity-25 focus:outline-none focus:bg-gray-500 transition ease-in-out duration-150"
+              class="ring-2 ring-gray-100 group flex items-center px-2 py-4 my-3 text-lg leading-6 text-gray-100 font-medium rounded-md focus:outline-none focus:bg-gray-500 transition ease-in-out duration-150"
               to="/">
               <svg class="mr-4 h-6 w-6 text-gray-100 transition ease-in-out duration-150" fill="none"
                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
