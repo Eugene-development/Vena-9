@@ -6,16 +6,22 @@ export const state = () => ({
 
 export const actions = {
 
-  get_breadcrumbs({ commit, state }, breadcrumbs) {
-    // заполнение массива
-    commit('BREAD', breadcrumbs[0]);
-    commit('BREAD2', breadcrumbs[1]);
+  getBread({ commit, state }, pathName) {
+
+    let map = new Map([
+      ['content-navigation', 'Навигация'],
+      [1,    'num1'],
+      [true, 'bool1']
+    ]);
+
+    const breadcrumbsEndPoint = map.get(pathName);
+    commit('BREAD_ENDPOINT', breadcrumbsEndPoint);
   },
 };
 
 export const mutations = {
   BREAD: (state, breadcrumbs) => state.breadcrumbs = breadcrumbs,
-  BREAD2: (state, breadcrumbsEndPoint) => state.breadcrumbsEndPoint = breadcrumbsEndPoint,
+  BREAD_ENDPOINT: (state, breadcrumbsEndPoint) => state.breadcrumbsEndPoint = breadcrumbsEndPoint,
 };
 
 

@@ -40,7 +40,7 @@
             </svg>
             <div aria-current="page"
                  class="text-sm leading-5 font-medium text-gray-700 hover:text-gray-700 transition duration-150 ease-in-out"
-                 href="#">{{ breadcrumbsEndPoint }} {{ $nuxt.$route.name }}
+                 href="#">{{ breadcrumbsEndPoint }}
             </div>
           </div>
         </li>
@@ -53,7 +53,21 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 
+
+
 export default {
+
+  mounted() {
+    this.getBread($nuxt.$route.name);
+  },
+  methods: {
+    ...mapActions({
+      'getBread': 'navbar/breadcrumbs/getBread',
+    })
+  },
+
+
+
   computed: {
     ...mapGetters({
       breadcrumbs: 'navbar/breadcrumbs/breadcrumbs',

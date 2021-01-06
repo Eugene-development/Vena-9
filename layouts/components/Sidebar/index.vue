@@ -63,7 +63,6 @@
           <!-- Expandable link section, show/hide based on state. -->
           <div v-if="visibleContent" class="mt-1 space-y-1">
             <NuxtLink
-              @click.native="get_breadcrumbs (['Контент сайта', 'Навигация'])"
               class="group w-full flex items-center pl-10 pr-2 py-2 text-sm leading-5 font-medium rounded-md text-gray-100 hover:text-gray-200 hover:bg-gray-500 hover:bg-opacity-25 focus:outline-none focus:bg-gray-500 focus:bg-opacity-25 transition ease-in-out duration-150"
               to="/content/navigation">
               <svg
@@ -73,6 +72,17 @@
               </svg>
               Навигация
             </NuxtLink>
+<!--            <NuxtLink-->
+<!--              @click.native="get_breadcrumbs (['Контент сайта', 'Навигация'])"-->
+<!--              class="group w-full flex items-center pl-10 pr-2 py-2 text-sm leading-5 font-medium rounded-md text-gray-100 hover:text-gray-200 hover:bg-gray-500 hover:bg-opacity-25 focus:outline-none focus:bg-gray-500 focus:bg-opacity-25 transition ease-in-out duration-150"-->
+<!--              to="/content/navigation">-->
+<!--              <svg-->
+<!--                class="mr-4 h-4 w-4 text-gray-100 transition ease-in-out duration-150"-->
+<!--                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">-->
+<!--                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />-->
+<!--              </svg>-->
+<!--              Навигация-->
+<!--            </NuxtLink>-->
             <NuxtLink
               class="group w-full flex items-center pl-10 pr-2 py-2 text-sm leading-5 font-medium rounded-md text-gray-100 hover:text-gray-200 hover:bg-gray-500 hover:bg-opacity-25 focus:outline-none focus:bg-gray-500 focus:bg-opacity-25 transition ease-in-out duration-150"
               to="/site/navigation/menu">
@@ -259,7 +269,7 @@ export default {
   methods: {
     ...mapActions({
       'get_visibleContent': 'sidebar/visibility/get_visibleContent',
-      'get_breadcrumbs': 'navbar/breadcrumbs/get_breadcrumbs',
+      // 'get_breadcrumbs': 'navbar/breadcrumbs/get_breadcrumbs',
     })
   },
 
