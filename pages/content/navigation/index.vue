@@ -7,7 +7,7 @@
 
 <script>
 
-import { mapGetters } from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
 
 import { Menu } from '~/components'
 
@@ -26,13 +26,17 @@ export default {
     }),
   },
 
-  nuxtI18n: {
-    paths: {
-      en: '/about-us', // -> accessible at /about-us (no prefix since it's the default locale)
-      fr: '/a-propos', // -> accessible at /fr/a-propos
-      es: '/sobre'     // -> accessible at /es/sobre
-    }
+
+  mounted() {
+    this.getBread($nuxt.$route.name);
   },
+  methods: {
+    ...mapActions({
+      'getBread': 'navbar/breadcrumbs/getBread',
+    })
+  },
+
+
 
 
   data() {

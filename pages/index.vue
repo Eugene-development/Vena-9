@@ -41,6 +41,7 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
+import {mapActions} from "vuex";
 
 export default {
   // layout: 'empty',
@@ -48,7 +49,18 @@ export default {
 
   components: {
     Logo
-  }
+  },
+
+  mounted() {
+    this.getBread($nuxt.$route.name);
+  },
+  methods: {
+    ...mapActions({
+      'getBread': 'navbar/breadcrumbs/getBread',
+    })
+  },
+
+
 }
 </script>
 

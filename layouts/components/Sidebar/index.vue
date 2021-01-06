@@ -266,10 +266,15 @@
 import {mapActions, mapGetters} from 'vuex'
 
 export default {
+
+
+
+
   methods: {
     ...mapActions({
       'get_visibleContent': 'sidebar/visibility/get_visibleContent',
       // 'get_breadcrumbs': 'navbar/breadcrumbs/get_breadcrumbs',
+
     })
   },
 
