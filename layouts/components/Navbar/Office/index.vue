@@ -1,5 +1,5 @@
 <template>
-  <div class="hidden lg:block lg:ml-4">
+  <div class="hidden lg:block lg:ml-4 bg-white">
     <div class="flex items-center">
       <button
         aria-label="Notifications"

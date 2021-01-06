@@ -13,7 +13,7 @@
           </dl>
         </div>
       </div>
-      <div class="overflow-hidden shadow rounded-lg bg-blueGray-50">
+      <div class="overflow-hidden shadow rounded-lg bg-gray-50">
         <div class="px-2 py-1 sm:p-4">
           <dl>
             <dt class="text-sm leading-5 font-medium text-gray-600 truncate">
@@ -25,7 +25,7 @@
           </dl>
         </div>
       </div>
-      <div class="overflow-hidden shadow rounded-lg bg-gray-100">
+      <div class="overflow-hidden shadow rounded-lg bg-gray-50">
         <div class="px-2 py-1 sm:p-4">
           <dl>
             <dt class="text-sm leading-5 font-medium text-gray-600 truncate">
