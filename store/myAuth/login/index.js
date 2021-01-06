@@ -21,7 +21,6 @@ export const actions = {
       email: state.ruleForm.email,
       password: e.target.value
     };
-    // console.log(e.target.value);
     commit('RULE_FORM', ruleForm)
   },
 
