@@ -128,7 +128,6 @@
             </NuxtLink>
           </div>
           <!--Конец секции сайдбара контент-->
-
 <!--          <button-->
 <!--            class="mt-3 group w-full flex items-center px-2 pr-2 py-2 text-base leading-5 font-medium rounded-md text-gray-100  hover:text-gray-800 hover:bg-gray-500 focus:outline-none focus:bg-gray-500  transition ease-in-out duration-150"-->
 <!--            @click="get_visibleContent">-->
