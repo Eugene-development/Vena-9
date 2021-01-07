@@ -9,15 +9,16 @@
 
 import {mapActions, mapGetters} from 'vuex'
 
-import { Menu } from '~/components'
+import { Menu } from '~/components';
 import breadcrumbs from "@/mixins/breadcrumbs";
+import tabs from "@/mixins/tabs";
 
 export default {
   // middleware: 'access',
   components: {
     Menu,
   },
-  mixins: [breadcrumbs],
+  mixins: [breadcrumbs, tabs],
 
   async asyncData({store}) {
     await store.dispatch('content/navigation/menu/fetch')

@@ -40,14 +40,15 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import Logo from '~/components/Logo.vue';
 import breadcrumbs from "@/mixins/breadcrumbs";
+import tabs from "@/mixins/tabs";
 
 export default {
   components: {
     Logo
   },
-  mixins: [breadcrumbs],
+  mixins: [breadcrumbs, tabs],
 }
 </script>
 

@@ -39,13 +39,7 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 
-
-
 export default {
-
-
-
-
   computed: {
     ...mapGetters({
       // breadcrumbs: 'navbar/breadcrumbs/breadcrumbs',
