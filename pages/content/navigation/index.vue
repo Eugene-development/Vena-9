@@ -10,6 +10,7 @@
 import {mapActions, mapGetters} from 'vuex'
 
 import { Menu } from '~/components'
+import breadcrumbs from "@/mixins/breadcrumbs";
 
 export default {
   // middleware: 'access',
@@ -26,14 +27,11 @@ export default {
     }),
   },
 
+  mixins: [breadcrumbs],
+
 
   mounted() {
     this.getBread($nuxt.$route.name);
-  },
-  methods: {
-    ...mapActions({
-      'getBread': 'navbar/breadcrumbs/getBread',
-    })
   },
 
 
