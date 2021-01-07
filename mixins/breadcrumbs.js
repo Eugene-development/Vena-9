@@ -6,5 +6,7 @@ export default {
       'getBread': 'navbar/breadcrumbs/getBread',
     })
   },
-
+  mounted() {
+    this.getBread($nuxt.$route.name);
+  },
 }

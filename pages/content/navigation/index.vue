@@ -17,6 +17,8 @@ export default {
   components: {
     Menu,
   },
+  mixins: [breadcrumbs],
+
   async asyncData({store}) {
     await store.dispatch('content/navigation/menu/fetch')
   },
@@ -26,16 +28,6 @@ export default {
       paginateMenu: 'content/navigation/menu/paginateMenu',
     }),
   },
-
-  mixins: [breadcrumbs],
-
-
-  mounted() {
-    this.getBread($nuxt.$route.name);
-  },
-
-
-
 
   data() {
     return {

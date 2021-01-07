@@ -41,25 +41,13 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
-import {mapActions} from "vuex";
 import breadcrumbs from "@/mixins/breadcrumbs";
 
 export default {
-  // layout: 'empty',
-  // middleware: 'access',
-
   components: {
     Logo
   },
-
-
   mixins: [breadcrumbs],
-
-  mounted() {
-    this.getBread($nuxt.$route.name);
-  },
-
-
 }
 </script>
 
