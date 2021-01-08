@@ -7,22 +7,16 @@ export const state = () => ({
 });
 
 export const actions = {
-
-  async getTabs({ commit, state }, path) {
-    //Создаём объект Map
+  getTabs({ commit, state }, path) {
     const map = new Map(state.pathMap);
-    //Мапим
     let tab = map.get(path);
-    //Создаём объект
     let newTabs = [
       {
         name: tab,
         path: path
       }
     ];
-
-    //Если в стейте уже есть элемент, то не добавлять его.
-    let val = state.tabs.some(item => item.name === newTabs[0].name)
+    let val = state.tabs.some(item => item.path === path)
     if (!val){
       const tabs = state.tabs.concat(newTabs)
       commit('TAB', tabs);
