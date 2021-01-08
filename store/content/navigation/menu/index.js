@@ -117,7 +117,6 @@ export const actions = {
         data.slice(i * size, i * size + size)
       );
     const paginateMenu = chunk(data, state.sizePage)[state.currentPage - 1];
-console.log(paginateMenu)
     const numberOfPage = Math.ceil(data.length / state.sizePage);
 
     commit('ALL_MENU', data);

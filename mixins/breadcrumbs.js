@@ -7,6 +7,6 @@ export default {
     })
   },
   mounted() {
-    this.getBread($nuxt.$route.name);
+    this.getBread($nuxt.$route.path);
   },
 }

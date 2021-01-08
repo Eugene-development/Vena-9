@@ -1,19 +1,19 @@
 export const state = () => ({
   breadcrumbsEndPoint: '',
   breadMap: [
-    ['index', 'Главная'],
-    ['content-navigation', 'Навигация'],
+    ['/', 'Главная'],
+    ['/content/navigation', 'Навигация'],
   ]
 //  массив пустой
 });
 
 export const actions = {
 
-  getBread({ commit, state }, pathName) {
+  getBread({ commit, state }, path) {
 
     const map = new Map(state.breadMap);
 
-    const breadcrumbsEndPoint = map.get(pathName);
+    const breadcrumbsEndPoint = map.get(path);
     commit('BREAD_ENDPOINT', breadcrumbsEndPoint);
   },
 };

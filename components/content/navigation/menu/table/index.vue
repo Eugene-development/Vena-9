@@ -25,9 +25,9 @@
             </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-            <tr v-for="menu of paginateMenu" :key="menu.id">
+            <tr v-for="(menu, idx) of paginateMenu" :key="menu.id">
               <td class="px-6 py-3 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
-                {{ menu.id }}
+                ({{ idx+1 }})-{{ menu.id }}
               </td>
               <td class="px-6 py-3 whitespace-no-wrap text-sm leading-5 text-gray-500 text-center">
                 {{ menu.name }}
@@ -94,8 +94,6 @@ export default {
       paginateMenu: 'content/navigation/menu/paginateMenu',
     }),
   },
-
-
 }
 
 </script>
