@@ -6,12 +6,22 @@ export const state = () => ({
   ],
   bg:'',
   color: [
-    'bg-red-100',
-    'bg-blue-100',
-    'bg-amber-100',
-    'bg-yellow-100',
-    'bg-lime-100',
-    'bg-green-100',
+    'bg-red-50',
+    'bg-blue-50',
+    'bg-amber-50',
+    'bg-yellow-50',
+    'bg-lime-50',
+    'bg-emerald-50',
+    'bg-teal-50',
+    'bg-cyan-50',
+    'bg-lightBlue-50',
+    'bg-blue-50',
+    'bg-indigo-50',
+    'bg-violet-50',
+    'bg-purple-50',
+    'bg-fuchsia-50',
+    'bg-pink-50',
+    'bg-rose-50',
   ]
 });
 
@@ -20,10 +30,13 @@ export const actions = {
  async getTabs({ commit, state }, path) {
     const map = new Map(state.pathMap);
     let tab = await map.get(path);
-    let newTabs = [
+   const bg = state.color[Math.floor(Math.random() * state.color.length)]
+
+   let newTabs = [
       {
         name: tab,
-        path: path
+        path: path,
+        bg: bg
       }
     ];
    let val = await state.tabs.some(item => item.path === path)
@@ -31,13 +44,6 @@ export const actions = {
      const tabs = await state.tabs.concat(newTabs)
      commit('TAB', tabs);
    }
-
-
-   // console.log(state.bg.length)
-
-   const bg = state.color[Math.floor(Math.random() * state.color.length)]
-
-   commit('BG', bg)
  },
 
   async closeTab({ commit, state }, path){
@@ -48,10 +54,8 @@ export const actions = {
 
 export const mutations = {
   TAB: (state, tabs) => state.tabs = tabs,
-  BG: (state, bg) => state.bg = bg,
 };
 
 export const getters = {
   tabs: state => state.tabs,
-  bg: state => state.bg,
 };
