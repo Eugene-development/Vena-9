@@ -7,6 +7,7 @@ export const state = () => ({
 });
 
 export const actions = {
+
   getTabs({ commit, state }, path) {
     const map = new Map(state.pathMap);
     let tab = map.get(path);
@@ -22,6 +23,10 @@ export const actions = {
       commit('TAB', tabs);
     }
   },
+
+  closeTab(){
+console.log('123')
+  }
 };
 
 export const mutations = {
