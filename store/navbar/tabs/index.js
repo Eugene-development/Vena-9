@@ -20,27 +20,18 @@ export const actions = {
     let val = await state.tabs.some(item => item.path === path)
     if (!val){
       const tabs = await state.tabs.concat(newTabs)
-      // console.log(tabs);
       commit('TAB', tabs);
     }
   },
 
-  async closeTab({ commit, state }, i){
-
-    // const tabs = state.tabs.find(item => item === i);
-    // const tabs = delete state.tabs[i+1];
-    // console.log(tabs);
-    const newTabs = state.tabs
-    // const tabs = await newTabs.splice(i,1);
-
-    commit('CLOSE_TAB', newTabs, i);
+  async closeTab({ commit, state }, path){
+    const tabs = await state.tabs.filter(item => item.path !== path);
+    commit('TAB', tabs);
   }
 };
 
 export const mutations = {
   TAB: (state, tabs) => state.tabs = tabs,
-  CLOSE_TAB: (state, newTabs, i) => state.tabs = delete newTabs[i],
-  // CLOSE_TAB: (state, newTabs, i) => state.tabs = newTabs.splice(i, 1),
 };
 
 export const getters = {

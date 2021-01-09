@@ -2,10 +2,10 @@
   <div  class="px-6 py-1 my-3">
     <span v-for="(tab, i) of tabs"  class="shadow inline-flex items-center px-3 py-2 mr-2 rounded text-xs font-medium leading-4 bg-violet-100 text-gray-800">
       <NuxtLink :to="tab.path">
-        {{ tab.name }} - {{i}}
+        {{ tab.name }}
       </NuxtLink>
       <button
-        @click="closeTab (i)"
+        @click="closeTab (tab.path)"
       >
         <svg class="ml-3  h-3 w-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path clip-rule="evenodd"
