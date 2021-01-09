@@ -8,29 +8,39 @@ export const state = () => ({
 
 export const actions = {
 
-  getTabs({ commit, state }, path) {
+ async getTabs({ commit, state }, path) {
     const map = new Map(state.pathMap);
-    let tab = map.get(path);
+    let tab = await map.get(path);
     let newTabs = [
       {
         name: tab,
         path: path
       }
     ];
-    let val = state.tabs.some(item => item.path === path)
+    let val = await state.tabs.some(item => item.path === path)
     if (!val){
-      const tabs = state.tabs.concat(newTabs)
+      const tabs = await state.tabs.concat(newTabs)
+      // console.log(tabs);
       commit('TAB', tabs);
     }
   },
 
-  closeTab(){
-console.log('123')
+  async closeTab({ commit, state }, i){
+
+    // const tabs = state.tabs.find(item => item === i);
+    // const tabs = delete state.tabs[i+1];
+    // console.log(tabs);
+    const newTabs = state.tabs
+    // const tabs = await newTabs.splice(i,1);
+
+    commit('CLOSE_TAB', newTabs, i);
   }
 };
 
 export const mutations = {
   TAB: (state, tabs) => state.tabs = tabs,
+  CLOSE_TAB: (state, newTabs, i) => state.tabs = delete newTabs[i],
+  // CLOSE_TAB: (state, newTabs, i) => state.tabs = newTabs.splice(i, 1),
 };
 
 export const getters = {

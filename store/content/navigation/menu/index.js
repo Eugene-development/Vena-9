@@ -163,19 +163,6 @@ export const actions = {
     }
   },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   //DELETE
   async handleDelete ({ commit, state }, id){
     const dialogDelete = true;
