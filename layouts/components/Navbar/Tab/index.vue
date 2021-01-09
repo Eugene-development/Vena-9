@@ -1,6 +1,9 @@
 <template>
   <div  class="px-6 py-1 my-3">
-    <span v-for="(tab, i) of tabs" class="shadow inline-flex items-center px-3 py-2 mr-2 rounded text-xs font-medium leading-4 bg-gray-100 text-gray-800">
+    <span v-for="tab of tabs"
+          class="shadow inline-flex items-center px-3 py-2 mr-2 rounded text-xs font-medium leading-4  text-gray-800"
+          :class="bg"
+    >
       <NuxtLink :to="tab.path">
         {{ tab.name }}
       </NuxtLink>
@@ -30,6 +33,7 @@ export default {
     ...mapGetters({
       // breadcrumbs: 'navbar/breadcrumbs/breadcrumbs',
       tabs: 'navbar/tabs/tabs',
+      bg: 'navbar/tabs/bg',
     }),
   },
 }
