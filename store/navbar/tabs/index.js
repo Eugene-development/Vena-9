@@ -16,9 +16,7 @@ export const actions = {
     const map = new Map(state.pathMap);
     let tab = await map.get(path);
 
-    const bgColor = Object.values(color)
-
-    const bg = bgColor[0][Math.floor(Math.random() * bgColor[0].length)]
+    const bg = color[Math.floor(Math.random() * color.length)]
 
     let newTabs = [
       {
