@@ -1,6 +1,5 @@
 import color from '~/vault/background'
 
-
 export const state = () => ({
   tabs: [],
   pathMap: [
