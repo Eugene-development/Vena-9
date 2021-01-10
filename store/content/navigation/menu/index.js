@@ -178,7 +178,6 @@ export const actions = {
       // await this.$axios.$get('delete-menu/' + state.currentMenu_delete[0].id, state.apiCRUD);
       // const index = await state.allMenu.findIndex(item => item.id === state.currentMenu_delete[0].id);
       // const  data  = await state.allMenu.splice(index, 1);
-      // console.log(data[0]);
       const { data } = await this.$axios.$get('navigation-menu', state.apiCRUD);
 
       const chunk = (data, size) =>
