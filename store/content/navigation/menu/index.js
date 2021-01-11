@@ -254,4 +254,3 @@ export const getters = {
   dialogUpdate: state => state.dialogUpdate,
   dialogDelete: state => state.dialogDelete,
 };
-
