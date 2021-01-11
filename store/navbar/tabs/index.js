@@ -1,18 +1,14 @@
 import color from '~/vault/background'
+import pathMap from '~/vault/pathMap'
 
 export const state = () => ({
   tabs: [],
-  pathMap: [
-    ['/', 'Главная'],
-    ['/content/navigation', 'Навигация'],
-  ],
-  bg: '',
 });
 
 export const actions = {
 
   async getTabs({ commit, state }, path) {
-    const map = new Map(state.pathMap);
+    const map = new Map(pathMap);
     let tab = await map.get(path);
 
     const bg = color[Math.floor(Math.random() * color.length)]
