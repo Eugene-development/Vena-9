@@ -1,6 +1,7 @@
 <template>
   <div class="flex flex-col px-6 py-2">
-    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+
+    <div v-if="paginateMenu.length" class="overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="py-1 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
           <table class="min-w-full divide-y divide-gray-200">
@@ -27,7 +28,7 @@
             <tbody class="bg-white divide-y divide-gray-200">
             <tr v-for="(menu, idx) of paginateMenu" :key="menu.id">
               <td class="px-6 py-3 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-center">
-                ({{ idx+1 }})-{{ menu.id }}
+                {{ menu.id }}
               </td>
               <td class="px-6 py-3 whitespace-no-wrap text-sm leading-5 text-gray-500 text-center">
                 {{ menu.name }}
@@ -55,6 +56,7 @@
         </div>
       </div>
     </div>
+    <div v-else class="text-center">Таблица пуста</div>
     <MenuPagination/>
   </div>
 
